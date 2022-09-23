@@ -95,7 +95,6 @@ export default class ClientScript extends ZepetoScriptBehaviour {
                 // stirng.split(): 괄호 안에 지정한 문자를 기준으로 string을 여러 배열로 나누는 문법
                 // Ground_14.split("_")[1]: Ground_14에서 _ 를 기준으로 나누어서 반환된 배열 타입의 결과([Ground, 14])에서 두 번째 값인 14를 가져오기 위해 0번째가 아닌 1번째 값을 groundNumber 변수에 저장
                 const groundNumber = Number(message.groundName.split("_")[1]);
-                console.error(message.groundName);
 
                 // 밟은 오브젝트에 연결돼있는 Ground 컴포넌트 가져오기
                 const ground: Ground = groundManager?.groundListGameObject[groundNumber].GetComponent<Ground>();
