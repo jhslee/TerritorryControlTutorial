@@ -1,0 +1,173 @@
+fileFormatVersion: 2
+guid: 083a2c516b019414bb88b484a0e43a2a
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
+    \\\"__esModule\\\", { value: true });\\r\\nconst UnityEngine_1 = require(\\\"UnityEngine\\\");\\r\\nconst
+    ZEPETO_Character_Controller_1 = require(\\\"ZEPETO.Character.Controller\\\");\\r\\nconst
+    ZEPETO_Script_1 = require(\\\"ZEPETO.Script\\\");\\r\\nconst ZEPETO_World_1 =
+    require(\\\"ZEPETO.World\\\");\\r\\nconst GroundManager_1 = require(\\\"./GroundManager\\\");\\r\\nconst
+    ClientScript_1 = require(\\\"./ClientScript\\\");\\r\\n/** \uADF8\uB77C\uC6B4\uB4DC\uC758
+    \uD0C0\uC785 \uC815\uC758 */\\r\\nvar GroundType;\\r\\n(function (GroundType)
+    {\\r\\n    GroundType[GroundType[\\\"None\\\"] = 0] = \\\"None\\\";\\r\\n   
+    GroundType[GroundType[\\\"Red\\\"] = 1] = \\\"Red\\\";\\r\\n    GroundType[GroundType[\\\"Purple\\\"]
+    = 2] = \\\"Purple\\\";\\r\\n})(GroundType || (GroundType = {}));\\r\\n/** \uAC8C\uC784\uC758
+    UI \uB97C \uAD00\uB9AC\uD558\uB294 \uD074\uB798\uC2A4 \uC785\uB2C8\uB2E4. */\\r\\nclass
+    GameUI extends ZEPETO_Script_1.ZepetoScriptBehaviour {\\r\\n    constructor()
+    {\\r\\n        /* Singleton */\\r\\n        super(...arguments);\\r\\n       
+    /** \uBAA8\uB4E0 \uD50C\uB808\uC774\uC5B4\uC758 \uC378\uB124\uC77C\uC774 \uBBF8\uB9AC
+    \uC800\uC7A5\uB420 \uBCC0\uC218 */\\r\\n        this.playerThumbnails = new Map();\\r\\n       
+    /** Red Team Color */\\r\\n        this.redTeamColor = new UnityEngine_1.Color(232
+    / 255, 52 / 255, 78 / 255);\\r\\n        /** purple Team Color */\\r\\n       
+    this.purpleTeamColor = new UnityEngine_1.Color(92 / 255, 70 / 255, 255 / 255);\\r\\n       
+    /** White Color */\\r\\n        this.WhiteColor = new UnityEngine_1.Color(255
+    / 255, 255 / 255, 255 / 255);\\r\\n    }\\r\\n    /** GameUI\uC758 \uD568\uC218\uB098
+    \uBCC0\uC218\uC5D0 \uC811\uADFC\uD560 \uC218 \uC788\uB3C4\uB85D \uC778\uC2A4\uD134\uC2A4\uB97C
+    \uBC18\uD658\uD574\uC904 \uD568\uC218 */\\r\\n    static GetInstance() {\\r\\n       
+    if (!GameUI.instance) {\\r\\n            const targetObj = UnityEngine_1.GameObject.Find(\\\"GameUI\\\");\\r\\n           
+    if (targetObj)\\r\\n                GameUI.instance = targetObj.GetComponent($typeof(GameUI));\\r\\n       
+    }\\r\\n        return GameUI.instance;\\r\\n    }\\r\\n    /** true/false\uC5D0
+    \uB530\uB77C Ready \uC774\uBBF8\uC9C0 \uC624\uBE0C\uC81D\uD2B8 \uD654\uBA74\uC5D0
+    \uBCF4\uC5EC\uC8FC\uAC70\uB098 \uBCF4\uC774\uC9C0 \uC54A\uAC8C \uD558\uB294 \uD568\uC218
+    */\\r\\n    OnOffGameReady(bool) {\\r\\n        this.GameReady.SetActive(bool);\\r\\n       
+    this.GameStart.SetActive(!bool);\\r\\n        this.GameFinish.SetActive(!bool);\\r\\n   
+    }\\r\\n    /** GameReady \uC774\uBBF8\uC9C0 \uC560\uB2C8\uBA54\uC774\uC158 \uC2E4\uD589
+    \uD568\uC218 */\\r\\n    ShowGameReady() {\\r\\n        this.GameReadyAnimator.SetTrigger(\\\"Play\\\");\\r\\n   
+    }\\r\\n    /** true/false\uC5D0 \uB530\uB77C Ready \uC774\uBBF8\uC9C0 \uC624\uBE0C\uC81D\uD2B8
+    \uD654\uBA74\uC5D0 \uBCF4\uC5EC\uC8FC\uAC70\uB098 \uBCF4\uC774\uC9C0 \uC54A\uAC8C
+    \uD558\uB294 \uD568\uC218 */\\r\\n    OnOffGameStart(bool) {\\r\\n        this.GameReady.SetActive(!bool);\\r\\n       
+    this.GameStart.SetActive(bool);\\r\\n        this.GameFinish.SetActive(!bool);\\r\\n   
+    }\\r\\n    /** GameStart \uC774\uBBF8\uC9C0 \uC560\uB2C8\uBA54\uC774\uC158 \uC2E4\uD589
+    \uD568\uC218 */\\r\\n    ShowGameStart() {\\r\\n        this.GameStartAnimator.SetTrigger(\\\"Play\\\");\\r\\n   
+    }\\r\\n    /** true/false\uC5D0 \uB530\uB77C \uC810\uC218\uD310 \uC624\uBE0C\uC81D\uD2B8
+    \uD654\uBA74\uC5D0 \uBCF4\uC5EC\uC8FC\uAC70\uB098 \uBCF4\uC774\uC9C0 \uC54A\uAC8C
+    \uD558\uB294 \uD568\uC218 */\\r\\n    OnOffScoreboard(bool) {\\r\\n        this.Scoreboard.SetActive(bool);\\r\\n   
+    }\\r\\n    /** \uC810\uC218\uD310 \uC810\uC218 \uCD08\uAE30\uD654 \uD568\uC218
+    */\\r\\n    ResetScoreboard() {\\r\\n        this.RedTeamScore.text = '0';\\r\\n       
+    this.PurpleTeamScore.text = '0';\\r\\n    }\\r\\n    /** true/false\uC5D0 \uB530\uB77C
+    Ready \uC774\uBBF8\uC9C0 \uC624\uBE0C\uC81D\uD2B8 \uD654\uBA74\uC5D0 \uBCF4\uC5EC\uC8FC\uAC70\uB098
+    \uBCF4\uC774\uC9C0 \uC54A\uAC8C \uD558\uB294 \uD568\uC218 */\\r\\n    OnOffGameFinish(bool)
+    {\\r\\n        this.GameReady.SetActive(!bool);\\r\\n        this.GameStart.SetActive(!bool);\\r\\n       
+    this.GameFinish.SetActive(bool);\\r\\n    }\\r\\n    /** GameFinish \uC774\uBBF8\uC9C0
+    \uC560\uB2C8\uBA54\uC774\uC158 \uC2E4\uD589 \uD568\uC218 */\\r\\n    ShowGameFinish()
+    {\\r\\n        this.GameFinishAnimator.SetTrigger(\\\"Play\\\");\\r\\n    }\\r\\n   
+    /** gound\uC758 \uD0C0\uC785 \uAC2F\uC218\uC5D0 \uB530\uB77C \uC810\uC218\uB97C
+    \uAC31\uC2E0\uD574\uC8FC\uB294 \uD568\uC218 */\\r\\n    UpdateScore() {\\r\\n       
+    // GroundManager \uAC00\uC838\uC624\uAE30\\r\\n        const groundManager =
+    GroundManager_1.default.GetInstance();\\r\\n        // groundType\uB4E4\uC774
+    \uC815\uB9AC\uB41C \uAC1D\uCCB4 \uC0DD\uC131\\r\\n        const grounds = {\\r\\n           
+    Red: 0,\\r\\n            Purple: 0\\r\\n        };\\r\\n        // ground\uC758
+    Type\uC744 \uAC00\uC838\uC640\uC11C grounds \uAC1D\uCCB4\uC5D0 \uC810\uC218 \uC0DD\uC131\\r\\n       
+    groundManager.groundList.forEach((v, i) => {\\r\\n            // v.GetType()\uC758
+    return \uAC12\uC744 \uC5EC\uB7EC case\uB85C \uAD6C\uBD84\uD558\uC5EC \uC218\uD589\uD560
+    \uB3D9\uC791\uC744 \uB2E4\uB974\uAC8C \uD560 \uC218 \uC788\uC74C\\r\\n           
+    // if\uBB38\uC740 \uC21C\uC11C\uB300\uB85C \uC5EC\uB7EC \uC870\uAC74\uC744 \uD655\uC778\uD558\uC9C0\uB9CC
+    switch/case\uBB38\uC740 \uC5EC\uB7EC \uC870\uAC74 \uC911\uC5D0 \uD574\uB2F9\uD558\uB294
+    case\uB9CC \uACE8\uB77C\uC11C \uCF54\uB4DC\uB97C \uC2E4\uD589\uD568\\r\\n           
+    // if\uB294 \uBCF5\uC7A1\uD55C \uC870\uAC74\uC744 \uC0AC\uC6A9\uD558\uAE30\uC5D0
+    \uC801\uD569\uD558\uACE0, switch/case\uB294 \uB2E8\uC21C\uD55C \uC870\uAC74\uC744
+    \uC0AC\uC6A9\uD560 \uB54C \uC801\uD569\\r\\n            switch (v.GetType())
+    {\\r\\n                // case\uAC00(v.GetType()\uC758 \uB9AC\uD134\uAC12\uC774)
+    GroundType.Red\uC640 \uC77C\uCE58\uD560 \uACBD\uC6B0\\r\\n                case
+    GroundType.Red:\\r\\n                    grounds.Red += 1;\\r\\n                   
+    break;\\r\\n                // case\uAC00 GroundType.Purple\uACFC \uC77C\uCE58\uD560
+    \uACBD\uC6B0\\r\\n                case GroundType.Purple:\\r\\n                   
+    grounds.Purple += 1;\\r\\n                    break;\\r\\n            }\\r\\n       
+    });\\r\\n        // \uC810\uC218 \uBC18\uC601\\r\\n        this.RedTeamScore.text
+    = grounds.Red.toString();\\r\\n        this.PurpleTeamScore.text = grounds.Purple.toString();\\r\\n   
+    }\\r\\n    /** \uACB0\uACFC \uD654\uBA74\uC744 \uBCF4\uC774\uC9C0 \uC54A\uB3C4\uB85D
+    \uD558\uB294 \uD568\uC218 */\\r\\n    DisableResult() {\\r\\n        // Win \uC624\uBE0C\uC81D\uD2B8,
+    Draw \uC624\uBE0C\uC81D\uD2B8, Result \uC624\uBE0C\uC81D\uD2B8 \uBE44\uD65C\uC131\uD654\\r\\n       
+    this.ResultWin.SetActive(false);\\r\\n        this.ResultDraw.SetActive(false);\\r\\n       
+    this.Result.SetActive(false);\\r\\n    }\\r\\n    /** \uC2B9\uC790\uB97C \uCC3E\uC544
+    \uACB0\uACFC \uD654\uBA74\uC744 \uC2B9\uC790\uC758 \uC815\uBCF4\uB85C \uC138\uD305\uD558\uACE0
+    \uBCF4\uC5EC\uC8FC\uB294 \uD568\uC218 */\\r\\n    SetResult() {\\r\\n       
+    // \uD300 \uC810\uC218 \uAC00\uC838\uC624\uAE30\\r\\n        const redTeamScore
+    = Number(this.RedTeamScore.text);\\r\\n        const purpleTeamScore = Number(this.PurpleTeamScore.text);\\r\\n       
+    // red Team\uC774 Purple Team\uBCF4\uB2E4 \uC810\uC218\uAC00 \uB192\uC73C\uBA74\\r\\n       
+    if (redTeamScore > purpleTeamScore) {\\r\\n            // \uC2B9\uC790(Red Team)
+    userId \uCC3E\uAE30\\r\\n            const winnerUserId = this.getWinnerUserId(GroundType.Red);\\r\\n           
+    // \uC2B9\uC790 \uC774\uB984 \uCC3E\uAE30\\r\\n            const winnerName =
+    $extension(\\\"ZEPETO.Character.Controller.Utils\\\").GetPlayerWithUserId(ZEPETO_Character_Controller_1.ZepetoPlayers.instance,
+    winnerUserId).name;\\r\\n            // Win \uC624\uBE0C\uC81D\uD2B8 \uB0B4 Title
+    Text \uC624\uBE0C\uC81D\uD2B8\uC758 \uD14D\uC2A4\uD2B8\uB97C \\\"Red Team \uC2B9\uB9AC!\\\"\uB85C
+    \uBCC0\uACBD\\r\\n            this.WinTitleText.text = \\\"Red Team \uC2B9\uB9AC!\\\";\\r\\n           
+    // ========== \uC219\uC81C \uCF54\uB4DC \uC704\uCE58 ==========\\r\\n           
+    // \uC378\uB124\uC77C \uAD50\uCCB4\\r\\n            this.WinnerThumbnail.sprite
+    = this.playerThumbnails.get(winnerUserId);\\r\\n            // Win \uC624\uBE0C\uC81D\uD2B8
+    \uB0B4 Description \uC624\uBE0C\uC81D\uD2B8\uC758 \uD14D\uC2A4\uD2B8\uB97C \uC2B9\uC790\uC758
+    \uB2C9\uB124\uC784\uC73C\uB85C \uC124\uC815\\r\\n            this.WinDescText.text
+    = winnerName;\\r\\n            // Result \uC624\uBE0C\uC81D\uD2B8 \uB0B4 Background
+    \uC774\uBBF8\uC9C0 \uC624\uBE0C\uC81D\uD2B8 \uBC30\uACBD\uC0C9\uC744 \uC2B9\uD300\uC758
+    \uBC30\uACBD\uC0C9\uC73C\uB85C \uBCC0\uACBD\\r\\n            this.ChangeImageBackgroundColor(this.ResultBackground,
+    this.redTeamColor);\\r\\n            // \uACB0\uACFC \uD654\uBA74\uC774 \uBCF4\uC774\uB3C4\uB85D
+    Result \uC624\uBE0C\uC81D\uD2B8 \uD65C\uC131\uD654\\r\\n            this.Result.SetActive(true);\\r\\n           
+    // Draw \uC624\uBE0C\uC81D\uD2B8 \uB300\uC2E0 Win \uC624\uBE0C\uC81D\uD2B8\uAC00
+    \uBCF4\uC774\uB3C4\uB85D \uD65C\uC131\uD654\\r\\n            this.ResultWin.SetActive(true);\\r\\n       
+    }\\r\\n        // Purple Team\uC774 red Team\uBCF4\uB2E4 \uC810\uC218\uAC00 \uB192\uC73C\uBA74\\r\\n       
+    else if (purpleTeamScore > redTeamScore) {\\r\\n            // \uC2B9\uC790(Purple
+    Team) userId \uCC3E\uAE30\\r\\n            const winnerUserId = this.getWinnerUserId(GroundType.Purple);\\r\\n           
+    // \uC2B9\uC790 \uC774\uB984 \uCC3E\uAE30\\r\\n            const winnerName =
+    $extension(\\\"ZEPETO.Character.Controller.Utils\\\").GetPlayerWithUserId(ZEPETO_Character_Controller_1.ZepetoPlayers.instance,
+    winnerUserId).name;\\r\\n            // Win \uC624\uBE0C\uC81D\uD2B8 \uB0B4 Title
+    Text \uC624\uBE0C\uC81D\uD2B8\uC758 \uD14D\uC2A4\uD2B8\uB97C \\\"Purple Team
+    \uC2B9\uB9AC!\\\"\uB85C \uBCC0\uACBD\\r\\n            this.WinTitleText.text
+    = \\\"Purple Team \uC2B9\uB9AC!\\\";\\r\\n            // ========== \uC219\uC81C
+    \uCF54\uB4DC \uC704\uCE58 ==========\\r\\n            // \uC378\uB124\uC77C \uAD50\uCCB4\\r\\n           
+    this.WinnerThumbnail.sprite = this.playerThumbnails.get(winnerUserId);\\r\\n           
+    // Win \uC624\uBE0C\uC81D\uD2B8 \uB0B4 Description \uC624\uBE0C\uC81D\uD2B8\uC758
+    \uD14D\uC2A4\uD2B8\uB97C \uC2B9\uC790\uC758 \uB2C9\uB124\uC784\uC73C\uB85C \uC124\uC815\\r\\n           
+    this.WinDescText.text = winnerName;\\r\\n            // Result \uC624\uBE0C\uC81D\uD2B8
+    \uB0B4 Background \uC774\uBBF8\uC9C0 \uC624\uBE0C\uC81D\uD2B8 \uBC30\uACBD\uC0C9\uC744
+    \uC2B9\uD300\uC758 \uBC30\uACBD\uC0C9\uC73C\uB85C \uBCC0\uACBD\\r\\n           
+    this.ChangeImageBackgroundColor(this.ResultBackground, this.purpleTeamColor);\\r\\n           
+    // \uACB0\uACFC \uD654\uBA74\uC774 \uBCF4\uC774\uB3C4\uB85D Result \uC624\uBE0C\uC81D\uD2B8
+    \uD65C\uC131\uD654\\r\\n            this.Result.SetActive(true);\\r\\n           
+    // Draw \uC624\uBE0C\uC81D\uD2B8 \uB300\uC2E0 Win \uC624\uBE0C\uC81D\uD2B8\uAC00
+    \uBCF4\uC774\uB3C4\uB85D \uD65C\uC131\uD654\\r\\n            this.ResultWin.SetActive(true);\\r\\n       
+    }\\r\\n        // \uBB34\uC2B9\uBD80\uC77C \uACBD\uC6B0\\r\\n        else {\\r\\n           
+    // Result \uC624\uBE0C\uC81D\uD2B8 \uB0B4 Background \uC774\uBBF8\uC9C0 \uC624\uBE0C\uC81D\uD2B8
+    \uBC30\uACBD\uC0C9 \uD770\uC0C9\uC73C\uB85C \uBCC0\uACBD\\r\\n            this.ChangeImageBackgroundColor(this.ResultBackground,
+    this.WhiteColor);\\r\\n            // \uACB0\uACFC \uD654\uBA74\uC774 \uBCF4\uC774\uB3C4\uB85D
+    Result \uC624\uBE0C\uC81D\uD2B8 \uD65C\uC131\uD654\\r\\n            this.Result.SetActive(true);\\r\\n           
+    // Win \uC624\uBE0C\uC81D\uD2B8 \uB300\uC2E0 Draw \uC624\uBE0C\uC81D\uD2B8\uAC00
+    \uBCF4\uC774\uB3C4\uB85D \uD65C\uC131\uD654\\r\\n            this.ResultDraw.SetActive(true);\\r\\n       
+    }\\r\\n    }\\r\\n    /** \uC2B9\uB9AC\uD300\uC744 \uC778\uC790\uB85C \uBC1B\uC544
+    ClientScript\uC758 gameTeamList\uC5D0\uC11C \uD50C\uB808\uC774\uC5B4\uC758 \uD300\uC774
+    \uC2B9\uB9AC\uD300\uACFC \uC77C\uCE58\uD558\uB294 \uD50C\uB808\uC774\uC5B4\uC758
+    userId\uB97C \uBC18\uD658\uD558\uB294 \uD568\uC218 */\\r\\n    getWinnerUserId(winTeam)
+    {\\r\\n        let winnerUserId;\\r\\n        ClientScript_1.default.GetInstance()?.gameTeamList.forEach((gameTeamList,
+    userId) => {\\r\\n            if (gameTeamList.team == winTeam) {\\r\\n               
+    winnerUserId = userId;\\r\\n            }\\r\\n        });\\r\\n        // userId
+    \uBC18\uD658\\r\\n        return winnerUserId;\\r\\n    }\\r\\n    // ==========
+    \uC219\uC81C \uCF54\uB4DC \uC704\uCE58 ==========\\r\\n    /** \uC2B9\uC790\uC758
+    \uCE90\uB9AD\uD130 \uD504\uB85C\uD544 \uC378\uB124\uC77C \uAC00\uC838\uC624\uB294
+    \uD568\uC218 */\\r\\n    GetThumbnail(userId) {\\r\\n        ZEPETO_World_1.ZepetoWorldHelper.GetProfileTexture(userId,
+    (texture) => {\\r\\n            const sprite = this.GetSprite(texture);\\r\\n           
+    this.playerThumbnails.set(userId, sprite);\\r\\n        }, (error) => {\\r\\n           
+    console.log(error);\\r\\n        });\\r\\n    }\\r\\n    /** \uC774\uBBF8\uC9C0\uB97C
+    Sprite \uD615\uD0DC\uB85C \uBCC0\uD658\uD574\uC8FC\uB294 \uD568\uC218 */\\r\\n   
+    GetSprite(texture) {\\r\\n        const rect = new UnityEngine_1.Rect(0, 0, texture.width,
+    texture.height);\\r\\n        return UnityEngine_1.Sprite.Create(texture, rect,
+    new UnityEngine_1.Vector2(0.5, 0.5));\\r\\n    }\\r\\n    /** \uC774\uBBF8\uC9C0\uC758
+    \uBC30\uACBD\uC0C9\uC744 \uBCC0\uACBD\uD574\uC8FC\uB294 \uD568\uC218 */\\r\\n   
+    ChangeImageBackgroundColor(imageObject, color) {\\r\\n        imageObject.color
+    = color;\\r\\n    }\\r\\n}\\r\\nexports.default = GameUI;\\r\\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiR2FtZVVJLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiR2FtZVVJLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsNkNBQW9HO0FBRXBHLDZFQUE0RDtBQUM1RCxpREFBcUQ7QUFDckQsK0NBQWlEO0FBQ2pELG1EQUE0QztBQUM1QyxpREFBMEM7QUFJMUMsa0JBQWtCO0FBQ2xCLElBQUssVUFBZ0M7QUFBckMsV0FBSyxVQUFVO0lBQUcsMkNBQUksQ0FBQTtJQUFFLHlDQUFHLENBQUE7SUFBRSwrQ0FBTSxDQUFBO0FBQUMsQ0FBQyxFQUFoQyxVQUFVLEtBQVYsVUFBVSxRQUFzQjtBQVVyQyw2QkFBNkI7QUFDN0IsTUFBcUIsTUFBTyxTQUFRLHFDQUFxQjtJQUF6RDtRQUlJLGVBQWU7O1FBd0VmLDhCQUE4QjtRQUN2QixxQkFBZ0IsR0FBRyxJQUFJLEdBQUcsRUFBa0IsQ0FBQztRQUVwRCxxQkFBcUI7UUFDYixpQkFBWSxHQUFHLElBQUksbUJBQUssQ0FBQyxHQUFHLEdBQUcsR0FBRyxFQUFFLEVBQUUsR0FBRyxHQUFHLEVBQUUsRUFBRSxHQUFHLEdBQUcsQ0FBQyxDQUFDO1FBRWhFLHdCQUF3QjtRQUNoQixvQkFBZSxHQUFHLElBQUksbUJBQUssQ0FBQyxFQUFFLEdBQUcsR0FBRyxFQUFFLEVBQUUsR0FBRyxHQUFHLEVBQUUsR0FBRyxHQUFHLEdBQUcsQ0FBQyxDQUFDO1FBRW5FLGtCQUFrQjtRQUNWLGVBQVUsR0FBRyxJQUFJLG1CQUFLLENBQUMsR0FBRyxHQUFHLEdBQUcsRUFBRSxHQUFHLEdBQUcsR0FBRyxFQUFFLEdBQUcsR0FBRyxHQUFHLENBQUMsQ0FBQztJQXVMcEUsQ0FBQztJQXBRRyw4Q0FBOEM7SUFDOUMsTUFBTSxDQUFDLFdBQVc7UUFDZCxJQUFJLENBQUMsTUFBTSxDQUFDLFFBQVEsRUFBRTtZQUNsQixNQUFNLFNBQVMsR0FBRyx3QkFBVSxDQUFDLElBQUksQ0FBQyxRQUFRLENBQUMsQ0FBQztZQUM1QyxJQUFJLFNBQVM7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\",\"assetPath\":\"Assets/Scripts/GameUI.ts\",\"manifest\":{\"properties\":[{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"GameReady\",\"type\":\"UnityEngine.GameObject\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.AnimationModule\",\"name\":\"GameReadyAnimator\",\"type\":\"UnityEngine.Animator\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"GameStart\",\"type\":\"UnityEngine.GameObject\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.AnimationModule\",\"name\":\"GameStartAnimator\",\"type\":\"UnityEngine.Animator\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"GameFinish\",\"type\":\"UnityEngine.GameObject\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.AnimationModule\",\"name\":\"GameFinishAnimator\",\"type\":\"UnityEngine.Animator\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"Result\",\"type\":\"UnityEngine.GameObject\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.UI\",\"name\":\"ResultBackground\",\"type\":\"UnityEngine.UI.Image\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"ResultWin\",\"type\":\"UnityEngine.GameObject\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"ResultDraw\",\"type\":\"UnityEngine.GameObject\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.UI\",\"name\":\"WinTitleText\",\"type\":\"UnityEngine.UI.Text\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.UI\",\"name\":\"WinDescText\",\"type\":\"UnityEngine.UI.Text\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.UI\",\"name\":\"DrawTitleText\",\"type\":\"UnityEngine.UI.Text\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"Scoreboard\",\"type\":\"UnityEngine.GameObject\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.UI\",\"name\":\"TimerText\",\"type\":\"UnityEngine.UI.Text\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.UI\",\"name\":\"RedTeamScore\",\"type\":\"UnityEngine.UI.Text\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.UI\",\"name\":\"PurpleTeamScore\",\"type\":\"UnityEngine.UI.Text\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.UI\",\"name\":\"WinnerThumbnail\",\"type\":\"UnityEngine.UI.Image\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]}],\"name\":\"GameUI\",\"description\":\"\"},\"isCompiled\":true}"
+  typescriptHash: 768894480bf0c4b42de8bb1f896ef4d8
+  onlyWriteTrigger: 0

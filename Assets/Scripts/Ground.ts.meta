@@ -1,0 +1,66 @@
+fileFormatVersion: 2
+guid: 089a383492dceca4cb0239c67761e651
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
+    \\\"__esModule\\\", { value: true });\\r\\nconst UnityEngine_1 = require(\\\"UnityEngine\\\");\\r\\nconst
+    ZEPETO_Script_1 = require(\\\"ZEPETO.Script\\\");\\r\\nconst GroundManager_1
+    = require(\\\"./GroundManager\\\");\\r\\n/** \uADF8\uB77C\uC6B4\uB4DC\uC758 \uD0C0\uC785
+    \uC815\uC758 */\\r\\nvar GroundType;\\r\\n(function (GroundType) {\\r\\n    GroundType[GroundType[\\\"None\\\"]
+    = 0] = \\\"None\\\";\\r\\n    GroundType[GroundType[\\\"Red\\\"] = 1] = \\\"Red\\\";\\r\\n   
+    GroundType[GroundType[\\\"Purple\\\"] = 2] = \\\"Purple\\\";\\r\\n})(GroundType
+    || (GroundType = {}));\\r\\n/** \uADF8\uB77C\uC6B4\uB4DC \uAC1D\uCCB4 \uD074\uB798\uC2A4
+    \uC785\uB2C8\uB2E4. */\\r\\nclass Ground extends ZEPETO_Script_1.ZepetoScriptBehaviour
+    {\\r\\n    constructor() {\\r\\n        /* Unity Event */\\r\\n        super(...arguments);\\r\\n       
+    /* Ground Type */\\r\\n        /** \uADF8\uB77C\uC6B4\uB4DC\uC758 \uD0C0\uC785
+    */\\r\\n        this.groundType = GroundType.None;\\r\\n    }\\r\\n    // Awake()
+    \uD568\uC218\uB294 \uAE30\uBCF8 \uC81C\uACF5 \uD568\uC218\uB85C, Start() \uD568\uC218\uB4E4\uBCF4\uB2E4
+    \uBA3C\uC800 \uC2E4\uD589\uB418\uB294 \uD2B9\uC9D5\uC744 \uAC00\uC9C0\uACE0 \uC788\uC74C.\\r\\n   
+    // ClientScript\uC758 Start() \uD568\uC218\uC5D0\uC11C renderer \uBCC0\uC218\uB97C
+    \uCC38\uC870(\uC811\uADFC)\uD558\uB294\uB370, \uC774 \uB54C \uBCC0\uC218\uAC00
+    \uBE44\uC5B4\uC788\uC73C\uBA74 \uAC8C\uC784 \uC2E4\uD589\uC5D0 \uBB38\uC81C\uAC00
+    \uB418\uAE30 \uB54C\uBB38\uC5D0 InitializeRenderer() \uD568\uC218 \uB0B4\uC5D0
+    \uC788\uB294 this.renderer\uB294 ClientScript\uC758 Start() \uD568\uC218\uC5D0\uC11C
+    \uCC38\uC870\uD558\uAE30 \uC804\uC5D0 \uB0B4\uC6A9\uC744 \uB123\uC5B4\uC8FC\uC5B4\uC57C
+    \uD568.\\r\\n    Awake() {\\r\\n        this.InitializeRenderer();\\r\\n    }\\r\\n   
+    /** \uADF8\uB77C\uC6B4\uB4DC\uC758 \uD0C0\uC785\uC744 \uC124\uC815\uD558\uB294
+    \uD568\uC218 */\\r\\n    SetType(groundType) {\\r\\n        // \uADF8\uB77C\uC6B4\uB4DC
+    \uD0C0\uC785\uC5D0 \uB530\uB978 \uBD84\uAE30 \uC124\uC815 \uC9C4\uD589\\r\\n       
+    switch (groundType) {\\r\\n            case GroundType.None:\\r\\n               
+    this.renderer.sharedMaterial = GroundManager_1.default.GetInstance().materialNone;\\r\\n               
+    break;\\r\\n            case GroundType.Red:\\r\\n                this.renderer.sharedMaterial
+    = GroundManager_1.default.GetInstance().materialRed;\\r\\n                break;\\r\\n           
+    case GroundType.Purple:\\r\\n                this.renderer.sharedMaterial = GroundManager_1.default.GetInstance().materialPurple;\\r\\n               
+    break;\\r\\n        }\\r\\n        // \uD0C0\uC785 \uAC31\uC2E0\\r\\n       
+    this.groundType = groundType;\\r\\n    }\\r\\n    // ========== \uCD94\uAC00\\r\\n   
+    /** \uC790\uAE30 \uC790\uC2E0(\uD604\uC7AC \uC774 Ground \uC2A4\uD06C\uB9BD\uD2B8\uAC00
+    \uC5F0\uACB0\uB41C \uC624\uBE0C\uC81D\uD2B8)\uC758 Type \uBC88\uD638(\uCC28\uC9C0\uD55C
+    \uD300 \uBC88\uD638)\uB97C \uBC18\uD658\uD574\uC8FC\uB294 \uD568\uC218 */\\r\\n   
+    GetType() {\\r\\n        const groundManager = GroundManager_1.default.GetInstance();\\r\\n       
+    switch (this.renderer.sharedMaterial) {\\r\\n            case groundManager.materialRed:\\r\\n               
+    return GroundType.Red;\\r\\n            case groundManager.materialPurple:\\r\\n               
+    return GroundType.Purple;\\r\\n            case groundManager.materialNone:\\r\\n               
+    return GroundType.None;\\r\\n        }\\r\\n    }\\r\\n    /** renderer \uBCC0\uC218\uC5D0
+    \uC790\uAE30 \uC790\uC2E0\uC758 MeshRenderer(Inspector \uCC3D\uC5D0\uC11C \uBCFC
+    \uC218 \uC788\uB294 \uCEF4\uD3EC\uB10C\uD2B8)\uB97C \uAC00\uC838\uC640 \uBCC0\uC218\uC5D0
+    \uC800\uC7A5\uD558\uB294 \uD568\uC218 */\\r\\n    InitializeRenderer() {\\r\\n       
+    this.renderer = this.gameObject.GetComponent($typeof(UnityEngine_1.MeshRenderer));\\r\\n   
+    }\\r\\n}\\r\\nexports.default = Ground;\\r\\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiR3JvdW5kLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiR3JvdW5kLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsNkNBQTJDO0FBQzNDLGlEQUFxRDtBQUNyRCxtREFBNEM7QUFJNUMsa0JBQWtCO0FBQ2xCLElBQUssVUFBZ0M7QUFBckMsV0FBSyxVQUFVO0lBQUcsMkNBQUksQ0FBQTtJQUFFLHlDQUFHLENBQUE7SUFBRSwrQ0FBTSxDQUFBO0FBQUMsQ0FBQyxFQUFoQyxVQUFVLEtBQVYsVUFBVSxRQUFzQjtBQUlyQyx1QkFBdUI7QUFDdkIsTUFBcUIsTUFBTyxTQUFRLHFDQUFxQjtJQUF6RDtRQUlJLGlCQUFpQjs7UUFVakIsaUJBQWlCO1FBRWpCLGVBQWU7UUFDZixlQUFVLEdBQWUsVUFBVSxDQUFDLElBQUksQ0FBQztJQWdEN0MsQ0FBQztJQTNERywyREFBMkQ7SUFDM0Qsa0xBQWtMO0lBQ2xMLEtBQUs7UUFDRCxJQUFJLENBQUMsa0JBQWtCLEVBQUUsQ0FBQztJQUM5QixDQUFDO0lBU0Qsd0JBQXdCO0lBQ3hCLE9BQU8sQ0FBQyxVQUFzQjtRQUUxQix1QkFBdUI7UUFDdkIsUUFBUSxVQUFVLEVBQUU7WUFDaEIsS0FBSyxVQUFVLENBQUMsSUFBSTtnQkFDaEIsSUFBSSxDQUFDLFFBQVEsQ0FBQyxjQUFjLEdBQUcsdUJBQWEsQ0FBQyxXQUFXLEVBQUUsQ0FBQyxZQUFZLENBQUM7Z0JBQ3hFLE1BQU07WUFDVixLQUFLLFVBQVUsQ0FBQyxHQUFHO2dCQUNmLElBQUksQ0FBQyxRQUFRLENBQUMsY0FBYyxHQUFHLHVCQUFhLENBQUMsV0FBVyxFQUFFLENBQUMsV0FBVyxDQUFDO2dCQUN2RSxNQUFNO1lBQ1YsS0FBSyxVQUFVLENBQUMsTUFBTTtnQkFDbEIsSUFBSSxDQUFDLFFBQVEsQ0FBQyxjQUFjLEdBQUcsdUJBQWEsQ0FBQyxXQUFXLEVBQUUsQ0FBQyxjQUFjLENBQUM7Z0JBQzFFLE1BQU07U0FDYjtRQUVELFFBQVE7UUFDUixJQUFJLENBQUMsVUFBVSxHQUFHLFVBQVUsQ0FBQztJQUNqQyxDQUFDO0lBRUQsZ0JBQWdCO0lBQ2hCLHFFQUFxRTtJQUNyRSxPQUFPO1FBQ0gsTUFBTSxhQUFhLEdBQUcsdUJBQWEsQ0FBQyxXQUFXLEVBQUUsQ0FBQztRQUNsRCxRQUFRLElBQUksQ0FBQyxRQUFRLENBQUMsY0FBYyxFQUFFO1lBQ2xDLEtBQUssYUFBYSxDQUFDLFdBQVc7Z0JBQzFCLE9BQU8sVUFBVSxDQUFDLEdBQUcsQ0FBQztZQUMxQixLQUFLLGFBQWEsQ0FBQyxjQUFjO2dCQUM3QixPQUFPLFVBQVUsQ0FBQyxNQUFNLENBQUM7WUFDN0IsS0FBSyxhQUFhLENBQUMsWUFBWTtnQkFDM0IsT0FBTyxVQUFVLENBQUMsSUFBSSxDQUFDO1NBQzlCO0lBQ0wsQ0FBQztJQVVELG1GQUFtRjtJQUMzRSxrQkFBa0I7UUFDdEIsSUFBSSxDQUFDLFFBQVEsR0FBRyxJQUFJLENBQUMsVUFBVSxDQUFDLFlBQVksU0FBQywwQkFBWSxFQUFHLENBQUM7SUFDakUsQ0FBQztDQUNKO0FBakVELHlCQWlFQyJ9\",\"assetPath\":\"Assets/Scripts/Ground.ts\",\"manifest\":{\"properties\":[{\"assembly\":\"\",\"name\":\"groundType\",\"type\":\"GroundType\",\"isArray\":false,\"initValue\":[\"None\"],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"renderer\",\"type\":\"UnityEngine.MeshRenderer\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]}],\"name\":\"Ground\",\"description\":\"\"},\"isCompiled\":true}"
+  typescriptHash: 674a8a3c9a75053feb86271b6dd1fe5f
+  onlyWriteTrigger: 0

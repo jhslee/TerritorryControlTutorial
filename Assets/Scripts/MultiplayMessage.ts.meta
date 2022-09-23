@@ -1,0 +1,43 @@
+fileFormatVersion: 2
+guid: f857169f39ae4b14aacb8311d215949b
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
+    \\\"__esModule\\\", { value: true });\\r\\nexports.MultiplayMessageType = void
+    0;\\r\\n/** \uD074\uB77C\uC774\uC5B8\uD2B8\uC640\uC758 \uBA54\uC2DC\uC9C0 \uD1B5\uC2E0
+    \uC815\uC758 */\\r\\nvar MultiplayMessageType;\\r\\n(function (MultiplayMessageType)
+    {\\r\\n    /** Waiting \uC0C1\uD0DC \uC9C4\uC785 \uBA54\uC2DC\uC9C0 */\\r\\n   
+    MultiplayMessageType[\\\"Waiting\\\"] = \\\"Waiting\\\";\\r\\n    /** GameReady
+    \uBA54\uC2DC\uC9C0 */\\r\\n    MultiplayMessageType[\\\"GameReady\\\"] = \\\"GameReady\\\";\\r\\n   
+    /** GameStart \uC0C1\uD0DC \uC9C4\uC785 \uBA54\uC2DC\uC9C0 */\\r\\n    MultiplayMessageType[\\\"GameStart\\\"]
+    = \\\"GameStart\\\";\\r\\n    /** GameFinish \uBA54\uC138\uC9C0 */\\r\\n    MultiplayMessageType[\\\"GameFinish\\\"]
+    = \\\"GameFinish\\\";\\r\\n    /** Result \uC0C1\uD0DC \uC9C4\uC785 \uBA54\uC2DC\uC9C0
+    */\\r\\n    MultiplayMessageType[\\\"Result\\\"] = \\\"Result\\\";\\r\\n    /**
+    \uCE90\uB9AD\uD130\uC758 Transform \uAC31\uC2E0 \uBA54\uC2DC\uC9C0 */\\r\\n   
+    MultiplayMessageType[\\\"CharacterTransform\\\"] = \\\"CharacterTransform\\\";\\r\\n   
+    /** \uCE90\uB9AD\uD130\uC758 State \uAC31\uC2E0 \uBA54\uC2DC\uC9C0*/\\r\\n   
+    MultiplayMessageType[\\\"CharacterState\\\"] = \\\"CharacterState\\\";\\r\\n   
+    /** Ground\uC758 Color \uAC31\uC2E0 \uBA54\uC138\uC9C0 */\\r\\n    MultiplayMessageType[\\\"ChangeGroundColor\\\"]
+    = \\\"ChangeGroundColor\\\";\\r\\n    /** Ground Color \uAC31\uC2E0 \uC218\uC2E0
+    \uBA54\uC138\uC9C0 */\\r\\n    MultiplayMessageType[\\\"ChangeGroundColorReceive\\\"]
+    = \\\"ChangeGroundColorReceive\\\";\\r\\n})(MultiplayMessageType = exports.MultiplayMessageType
+    || (exports.MultiplayMessageType = {}));\\r\\n// ========== \uCD94\uAC00\\r\\n//#
+    sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiTXVsdGlwbGF5TWVzc2FnZS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIk11bHRpcGxheU1lc3NhZ2UudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7O0FBQUEsd0JBQXdCO0FBQ3hCLElBQVksb0JBNEJYO0FBNUJELFdBQVksb0JBQW9CO0lBRTVCLHdCQUF3QjtJQUN4QiwyQ0FBbUIsQ0FBQTtJQUVuQixvQkFBb0I7SUFDcEIsK0NBQXVCLENBQUE7SUFFdkIsMEJBQTBCO0lBQzFCLCtDQUF1QixDQUFBO0lBRXZCLHFCQUFxQjtJQUNyQixpREFBeUIsQ0FBQTtJQUV6Qix1QkFBdUI7SUFDdkIseUNBQWlCLENBQUE7SUFFakIsNEJBQTRCO0lBQzVCLGlFQUF5QyxDQUFBO0lBRXpDLHVCQUF1QjtJQUN2Qix5REFBaUMsQ0FBQTtJQUVqQywyQkFBMkI7SUFDM0IsK0RBQXVDLENBQUE7SUFFdkMsNkJBQTZCO0lBQzdCLDZFQUFxRCxDQUFBO0FBQ3pELENBQUMsRUE1Qlcsb0JBQW9CLEdBQXBCLDRCQUFvQixLQUFwQiw0QkFBb0IsUUE0Qi9CO0FBNEJELGdCQUFnQiJ9\",\"assetPath\":\"Assets/Scripts/MultiplayMessage.ts\",\"manifest\":{\"properties\":[],\"name\":\"MultiplayMessage\",\"description\":\"\"},\"isCompiled\":true}"
+  typescriptHash: 3a27633fe50b6779a71b9106bf46c21a
+  onlyWriteTrigger: 0

@@ -1,0 +1,50 @@
+fileFormatVersion: 2
+guid: 0ac2eb9d5aac25a4c8e93a97230fd8ef
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
+    \\\"__esModule\\\", { value: true });\\r\\nconst ZEPETO_Multiplay_1 = require(\\\"ZEPETO.Multiplay\\\");\\r\\nconst
+    ZEPETO_Script_1 = require(\\\"ZEPETO.Script\\\");\\r\\nconst ClientScript_1 =
+    require(\\\"./ClientScript\\\");\\r\\nconst MultiplayMessage_1 = require(\\\"./MultiplayMessage\\\");\\r\\nconst
+    Ground_1 = require(\\\"./Ground\\\");\\r\\n/**\\r\\n    \uADF8\uB77C\uC6B4\uB4DC\uC758
+    \uD2B8\uB9AC\uAC70 \uAC1D\uCCB4 \uC785\uB2C8\uB2E4. \uBB3C\uB9AC \uC774\uBCA4\uD2B8\uB97C
+    \uAC10\uC9C0\uD558\uC5EC Ground \uC5D0\uAC8C \uC804\uB2EC\uD569\uB2C8\uB2E4.\\r\\n   
+    \uCE90\uB9AD\uD130 \uCEE8\uD2B8\uB864\uB7EC\uC758 \uD2B8\uB9AC\uAC70\uB9C1\uC744
+    \uC704\uD558\uC5EC y \uCD95 \uD3EC\uC9C0\uC158\uC774 2\uB85C \uC124\uC815\uB429\uB2C8\uB2E4.\\r\\n*/\\r\\nclass
+    GroundTrigger extends ZEPETO_Script_1.ZepetoScriptBehaviour {\\r\\n    /** \uC790\uAE30
+    \uC790\uC2E0(\uD604\uC7AC \uC774 GroundManager \uC2A4\uD06C\uB9BD\uD2B8\uAC00
+    \uC5F0\uACB0\uB41C \uC624\uBE0C\uC81D\uD2B8)\uC758 \uBD80\uBAA8 \uC624\uBE0C\uC81D\uD2B8
+    \uC911 Ground \uCEF4\uD3EC\uB10C\uD2B8\uB97C \uAC00\uC9C0\uACE0 \uC788\uB294
+    \uC624\uBE0C\uC81D\uD2B8 \uBCC4\uB3C4\uB85C \uC800\uC7A5(\uCE90\uC2F1)\uD558\uB294
+    \uD568\uC218 */\\r\\n    InitializeGround() {\\r\\n        this.ground = this.GetComponentInParent($typeof(Ground_1.default));\\r\\n   
+    }\\r\\n    /* Unity Event */\\r\\n    Start() {\\r\\n        this.InitializeGround();\\r\\n   
+    }\\r\\n    OnTriggerEnter(coll) {\\r\\n        // \uCDA9\uB3CC\uCCB4(\uCE90\uB9AD\uD130)\uC758
+    \uC774\uB984\uC73C\uB85C GetTeam\\r\\n        const myTeam = ClientScript_1.default.GetInstance()?.GetTeam(coll.gameObject.name);\\r\\n       
+    // groundType \uAC00\uC838\uC624\uAE30\\r\\n        const groundType = this.ground.GetType();\\r\\n       
+    // \uBA54\uC138\uC9C0 \uC0DD\uC131\\r\\n        const message = new ZEPETO_Multiplay_1.RoomData();\\r\\n       
+    message.Add(\\\"team\\\", myTeam);\\r\\n        message.Add(\\\"groundName\\\",
+    this.transform.parent.name);\\r\\n        message.Add(\\\"groundType\\\", groundType);\\r\\n       
+    // \uB0B4\uAC00 \uBC1F\uC558\uB358 ground\uAC00 \uC544\uB2C8\uB77C\uBA74\\r\\n       
+    if (groundType != myTeam) {\\r\\n            const clientScript = ClientScript_1.default.GetInstance();\\r\\n           
+    // \uC0C9 \uBCC0\uACBD \uC694\uCCAD \uBA54\uC138\uC9C0 \uBCF4\uB0B4\uAE30\\r\\n           
+    clientScript.multiplayRoom.Send(MultiplayMessage_1.MultiplayMessageType.ChangeGroundColor,
+    message.GetObject());\\r\\n        }\\r\\n    }\\r\\n}\\r\\nexports.default =
+    GroundTrigger;\\r\\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiR3JvdW5kVHJpZ2dlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIkdyb3VuZFRyaWdnZXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFDQSx1REFBNEM7QUFDNUMsaURBQXFEO0FBQ3JELGlEQUEwQztBQUMxQyx5REFBMEQ7QUFDMUQscUNBQThCO0FBSTlCOzs7RUFHRTtBQUNGLE1BQXFCLGFBQWMsU0FBUSxxQ0FBcUI7SUFRNUQsbUdBQW1HO0lBQzNGLGdCQUFnQjtRQUNwQixJQUFJLENBQUMsTUFBTSxHQUFHLElBQUksQ0FBQyxvQkFBb0IsU0FBQyxnQkFBTSxFQUFHLENBQUM7SUFDdEQsQ0FBQztJQUlELGlCQUFpQjtJQUVqQixLQUFLO1FBQ0QsSUFBSSxDQUFDLGdCQUFnQixFQUFFLENBQUM7SUFDNUIsQ0FBQztJQUVELGNBQWMsQ0FBQyxJQUFjO1FBRXpCLHlCQUF5QjtRQUN6QixNQUFNLE1BQU0sR0FBRyxzQkFBWSxDQUFDLFdBQVcsRUFBRSxFQUFFLE9BQU8sQ0FBQyxJQUFJLENBQUMsVUFBVSxDQUFDLElBQUksQ0FBQyxDQUFDO1FBRXpFLGtCQUFrQjtRQUNsQixNQUFNLFVBQVUsR0FBRyxJQUFJLENBQUMsTUFBTSxDQUFDLE9BQU8sRUFBRSxDQUFDO1FBRXpDLFNBQVM7UUFDVCxNQUFNLE9BQU8sR0FBRyxJQUFJLDJCQUFRLEVBQUUsQ0FBQztRQUMvQixPQUFPLENBQUMsR0FBRyxDQUFDLE1BQU0sRUFBRSxNQUFNLENBQUMsQ0FBQztRQUM1QixPQUFPLENBQUMsR0FBRyxDQUFDLFlBQVksRUFBRSxJQUFJLENBQUMsU0FBUyxDQUFDLE1BQU0sQ0FBQyxJQUFJLENBQUMsQ0FBQztRQUN0RCxPQUFPLENBQUMsR0FBRyxDQUFDLFlBQVksRUFBRSxVQUFVLENBQUMsQ0FBQztRQUV0QyxzQkFBc0I7UUFDdEIsSUFBSSxVQUFVLElBQUksTUFBTSxFQUFFO1lBQ3RCLE1BQU0sWUFBWSxHQUFHLHNCQUFZLENBQUMsV0FBVyxFQUFFLENBQUM7WUFDaEQsa0JBQWtCO1lBQ2xCLFlBQVksQ0FBQyxhQUFhLENBQUMsSUFBSSxDQUFDLHVDQUFvQixDQUFDLGlCQUFpQixFQUFFLE9BQU8sQ0FBQyxTQUFTLEVBQUUsQ0FBQyxDQUFDO1NBQ2hHO0lBQ0wsQ0FBQztDQUNKO0FBMUNELGdDQTBDQyJ9\",\"assetPath\":\"Assets/Scripts/GroundTrigger.ts\",\"manifest\":{\"properties\":[],\"name\":\"GroundTrigger\",\"description\":\"\"},\"isCompiled\":true}"
+  typescriptHash: 11550cbbd50b57e4dacb4b89d2a3c1e8
+  onlyWriteTrigger: 0
