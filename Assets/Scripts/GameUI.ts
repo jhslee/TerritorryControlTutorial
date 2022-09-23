@@ -5,6 +5,7 @@ import { ZepetoScriptBehaviour } from 'ZEPETO.Script'
 import { ZepetoWorldHelper } from 'ZEPETO.World';
 import GroundManager from './GroundManager';
 import ClientScript from './ClientScript';
+import { TextMeshProUGUI } from 'TMPro';
 
 
 
@@ -73,25 +74,25 @@ export default class GameUI extends ZepetoScriptBehaviour {
     public ResultDraw: GameObject;
 
     /** 승부가 가려졌을 때 보이는 Result 화면의 TitleText 오브젝트 */
-    public WinTitleText: Text;
+    public WinTitleText: TextMeshProUGUI;
 
     /** 승부가 가려졌을 때 보이는 Result 화면의 DescriptionText 오브젝트 */
-    public WinDescText: Text;
+    public WinDescText: TextMeshProUGUI;
 
     /** 승부가 가려졌을 때 보이는 Result 화면의 TitleText 오브젝트 */
-    public DrawTitleText: Text;
+    public DrawTitleText: TextMeshProUGUI;
 
     /** 점수판 오브젝트 */
     public Scoreboard: GameObject;
 
     /** 타이머 텍스트 오브젝트 */
-    public TimerText: Text;
+    public TimerText: TextMeshProUGUI;
 
     /** 점수판 중 Red Team Score Text */
-    public RedTeamScore: Text;
+    public RedTeamScore: TextMeshProUGUI;
 
     /** 점수판 중 Purple Team Score Text */
-    public PurpleTeamScore: Text;
+    public PurpleTeamScore: TextMeshProUGUI;
 
     /** 승자의 캐릭터 프로필 썸네일 이미지가 저장될 변수 */
     public WinnerThumbnail: Image;
@@ -204,7 +205,7 @@ export default class GameUI extends ZepetoScriptBehaviour {
         const redTeamScore = Number(this.RedTeamScore.text);
         const purpleTeamScore = Number(this.PurpleTeamScore.text);
 
-        // red Team이 Purple Team보다 점수가 높으면
+        // Red team victory
         if (redTeamScore > purpleTeamScore) {
             // 승자(Red Team) userId 찾기
             const winnerUserId = this.getWinnerUserId(GroundType.Red);
@@ -224,7 +225,7 @@ export default class GameUI extends ZepetoScriptBehaviour {
             // Draw 오브젝트 대신 Win 오브젝트가 보이도록 활성화
             this.ResultWin.SetActive(true);
         }
-        // Purple Team이 red Team보다 점수가 높으면
+        // Purple Team Victory
         else if (purpleTeamScore > redTeamScore) {
             // 승자(Purple Team) userId 찾기
             const winnerUserId = this.getWinnerUserId(GroundType.Purple);
@@ -244,7 +245,7 @@ export default class GameUI extends ZepetoScriptBehaviour {
             // Draw 오브젝트 대신 Win 오브젝트가 보이도록 활성화
             this.ResultWin.SetActive(true);
         }
-        // 무승부일 경우
+        // Draw
         else {
             // Result 오브젝트 내 Background 이미지 오브젝트 배경색 흰색으로 변경
             this.ChangeImageBackgroundColor(this.ResultBackground, this.WhiteColor);
