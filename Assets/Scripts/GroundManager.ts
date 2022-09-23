@@ -1,4 +1,4 @@
-import { GameObject, Material } from 'UnityEngine'
+import { Debug, GameObject, Material } from 'UnityEngine'
 import { ZepetoScriptBehaviour } from 'ZEPETO.Script'
 import Ground from './Ground';
 
@@ -60,7 +60,8 @@ export default class GroundManager extends ZepetoScriptBehaviour {
 
     /** Ground Manager 오브젝트에 연결되어있는 64개의 Ground 오브젝트들의 Ground 스크립트 컴포넌트를 별도로 저장(캐싱)하는 함수 */
     private InitializeGround() {
-
+        this.groundList = [];
+        //this.groundList = [];
         // GroundListGameObject 에서 Ground 컴포넌트(스크립트)를 추출하여 저장해둠
         const count = this.groundListGameObject.length;
         for (let i = 0; i < count; i++) {

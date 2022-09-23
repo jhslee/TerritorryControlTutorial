@@ -3,7 +3,7 @@ import { ZepetoScriptBehaviour } from 'ZEPETO.Script'
 import { WorldService, ZepetoWorldMultiplay } from 'ZEPETO.World';
 import { Player, State } from 'ZEPETO.Multiplay.Schema';
 import { CharacterState, SpawnInfo, ZepetoCharacter, ZepetoPlayers } from 'ZEPETO.Character.Controller';
-import { GameObject, Quaternion, Transform, Vector3, WaitForSeconds } from 'UnityEngine';
+import { Debug, GameObject, Quaternion, Transform, Vector3, WaitForSeconds } from 'UnityEngine';
 import { MultiplayMessageChangeGroundColor, MultiplayMessageCharacterState, MultiplayMessageCharacterTransform, MultiplayMessageType } from './MultiplayMessage';
 import GroundManager from './GroundManager';
 import Ground from './Ground';
