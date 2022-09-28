@@ -97,7 +97,7 @@ export default class ClientScript extends ZepetoScriptBehaviour {
                 const groundNumber = Number(message.groundName.split("_")[1]);
 
                 // 밟은 오브젝트에 연결돼있는 Ground 컴포넌트 가져오기
-                const ground: Ground = groundManager?.groundListGameObject[groundNumber].GetComponent<Ground>();
+                const ground: Ground = groundManager?.groundList[groundNumber].GetComponent<Ground>();
 
                 // ground 색 변경
                 ground?.SetType(message.team);
