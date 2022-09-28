@@ -212,7 +212,7 @@ export default class GameUI extends ZepetoScriptBehaviour {
             // 승자 이름 찾기
             const winnerName = ZepetoPlayers.instance.GetPlayerWithUserId(winnerUserId).name;
             // Win 오브젝트 내 Title Text 오브젝트의 텍스트를 "Red Team 승리!"로 변경
-            this.WinTitleText.text = "Red Team 승리!";
+            this.WinTitleText.text = "Red Team Victory!";
             // ========== 숙제 코드 위치 ==========
             // 썸네일 교체
             this.WinnerThumbnail.sprite = this.playerThumbnails.get(winnerUserId);
