@@ -53,7 +53,7 @@ export default class GroundManager extends ZepetoScriptBehaviour {
     /* Ground */
 
     /** 보유한 모든 그라운드들의 게임오브젝트 배열 */
-    groundListGameObject: Transform;
+    groundListObject: Transform;
 
     /** 보유한 모든 그라운드들의 배열 */
     public groundList: Ground[] = [];
@@ -63,8 +63,8 @@ export default class GroundManager extends ZepetoScriptBehaviour {
         this.groundList = [];
         // GroundListGameObject 에서 Ground 컴포넌트(스크립트)를 추출하여 저장해둠
         
-        for (let i = 0; i < this.groundListGameObject.childCount; i++) {
-            let ground : Ground = this.groundListGameObject.GetChild(i).GetComponent<Ground>();
+        for (let i = 0; i < this.groundListObject.childCount; i++) {
+            let ground : Ground = this.groundListObject.GetChild(i).GetComponent<Ground>();
             ground.gameObject.name = `Ground_${i}`;
             this.groundList[i] = ground;
         }
