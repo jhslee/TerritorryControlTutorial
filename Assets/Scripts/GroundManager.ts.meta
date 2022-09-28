@@ -28,28 +28,26 @@ ScriptedImporter:
     \uACB0\uACFC\uB97C \uB3C4\uCD9C\uD574 \uB0C5\uB2C8\uB2E4.\\r\\n */\\r\\nclass
     GroundManager extends ZEPETO_Script_1.ZepetoScriptBehaviour {\\r\\n    constructor()
     {\\r\\n        /* Unity Event */\\r\\n        super(...arguments);\\r\\n       
-    /* Ground */\\r\\n        /** \uBCF4\uC720\uD55C \uBAA8\uB4E0 \uADF8\uB77C\uC6B4\uB4DC\uB4E4\uC758
-    \uAC8C\uC784\uC624\uBE0C\uC81D\uD2B8 \uBC30\uC5F4 */\\r\\n        this.groundListGameObject
-    = [];\\r\\n        /** \uBCF4\uC720\uD55C \uBAA8\uB4E0 \uADF8\uB77C\uC6B4\uB4DC\uB4E4\uC758
-    \uBC30\uC5F4 */\\r\\n        this.groundList = [];\\r\\n    }\\r\\n    Start()
-    {\\r\\n        this.InitializeGround();\\r\\n    }\\r\\n    /** GroundManager\uC758
-    \uD568\uC218\uB098 \uBCC0\uC218\uC5D0 \uC811\uADFC\uD560 \uC218 \uC788\uB3C4\uB85D
-    \uC778\uC2A4\uD134\uC2A4\uB97C \uBC18\uD658\uD574\uC904 \uD568\uC218 */\\r\\n   
-    static GetInstance() {\\r\\n        if (!GroundManager.instance) {\\r\\n           
-    const targetObj = UnityEngine_1.GameObject.Find(\\\"Ground Manager\\\");\\r\\n           
-    if (targetObj)\\r\\n                GroundManager.instance = targetObj.GetComponent($typeof(GroundManager));\\r\\n       
-    }\\r\\n        return GroundManager.instance;\\r\\n    }\\r\\n    /** Ground
-    Manager \uC624\uBE0C\uC81D\uD2B8\uC5D0 \uC5F0\uACB0\uB418\uC5B4\uC788\uB294 64\uAC1C\uC758
-    Ground \uC624\uBE0C\uC81D\uD2B8\uB4E4\uC758 Ground \uC2A4\uD06C\uB9BD\uD2B8 \uCEF4\uD3EC\uB10C\uD2B8\uB97C
-    \uBCC4\uB3C4\uB85C \uC800\uC7A5(\uCE90\uC2F1)\uD558\uB294 \uD568\uC218 */\\r\\n   
-    InitializeGround() {\\r\\n        this.groundList = [];\\r\\n        //this.groundList
-    = [];\\r\\n        // GroundListGameObject \uC5D0\uC11C Ground \uCEF4\uD3EC\uB10C\uD2B8(\uC2A4\uD06C\uB9BD\uD2B8)\uB97C
-    \uCD94\uCD9C\uD558\uC5EC \uC800\uC7A5\uD574\uB460\\r\\n        const count =
-    this.groundListGameObject.length;\\r\\n        for (let i = 0; i < count; i++)
-    {\\r\\n            this.groundList[i] = this.groundListGameObject[i].GetComponent($typeof(Ground_1.default));\\r\\n       
-    }\\r\\n    }\\r\\n    /** \uBAA8\uB4E0 \uADF8\uB77C\uC6B4\uB4DC\uB97C \uCD08\uAE30\uC0C1\uD0DC\uB85C
-    \uB9AC\uC14B\uD569\uB2C8\uB2E4. */\\r\\n    ResetGround() {\\r\\n        this.groundList.forEach(g
-    => g.SetType(0));\\r\\n    }\\r\\n}\\r\\nexports.default = GroundManager;\\r\\n//#
-    sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiR3JvdW5kTWFuYWdlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIkdyb3VuZE1hbmFnZXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSw2Q0FBeUQ7QUFDekQsaURBQXFEO0FBQ3JELHFDQUE4QjtBQUk5Qjs7OztHQUlHO0FBQ0gsTUFBcUIsYUFBYyxTQUFRLHFDQUFxQjtJQUFoRTtRQUlJLGlCQUFpQjs7UUFxQ2pCLFlBQVk7UUFFWiw4QkFBOEI7UUFDOUIseUJBQW9CLEdBQWlCLEVBQUUsQ0FBQztRQUV4Qyx1QkFBdUI7UUFDaEIsZUFBVSxHQUFhLEVBQUUsQ0FBQztJQWlCckMsQ0FBQztJQTFERyxLQUFLO1FBQ0QsSUFBSSxDQUFDLGdCQUFnQixFQUFFLENBQUM7SUFDNUIsQ0FBQztJQVNELHFEQUFxRDtJQUNyRCxNQUFNLENBQUMsV0FBVztRQUNkLElBQUksQ0FBQyxhQUFhLENBQUMsUUFBUSxFQUFFO1lBQ3pCLE1BQU0sU0FBUyxHQUFHLHdCQUFVLENBQUMsSUFBSSxDQUFDLGdCQUFnQixDQUFDLENBQUM7WUFDcEQsSUFBSSxTQUFTO2dCQUFFLGFBQWEsQ0FBQyxRQUFRLEdBQUcsU0FBUyxDQUFDLFlBQVksU0FBQyxhQUFhLEVBQUcsQ0FBQztTQUNuRjtRQUNELE9BQU8sYUFBYSxDQUFDLFFBQVEsQ0FBQztJQUNsQyxDQUFDO0lBeUJELHVGQUF1RjtJQUMvRSxnQkFBZ0I7UUFDcEIsSUFBSSxDQUFDLFVBQVUsR0FBRyxFQUFFLENBQUM7UUFDckIsdUJBQXVCO1FBQ3ZCLHVEQUF1RDtRQUN2RCxNQUFNLEtBQUssR0FBRyxJQUFJLENBQUMsb0JBQW9CLENBQUMsTUFBTSxDQUFDO1FBQy9DLEtBQUssSUFBSSxDQUFDLEdBQUcsQ0FBQyxFQUFFLENBQUMsR0FBRyxLQUFLLEVBQUUsQ0FBQyxFQUFFLEVBQUU7WUFDNUIsSUFBSSxDQUFDLFVBQVUsQ0FBQyxDQUFDLENBQUMsR0FBRyxJQUFJLENBQUMsb0JBQW9CLENBQUMsQ0FBQyxDQUFDLENBQUMsWUFBWSxTQUFDLGdCQUFNLEVBQUcsQ0FBQztTQUM1RTtJQUNMLENBQUM7SUFFRCw0QkFBNEI7SUFDNUIsV0FBVztRQUNQLElBQUksQ0FBQyxVQUFVLENBQUMsT0FBTyxDQUFDLENBQUMsQ0FBQyxFQUFFLENBQUMsQ0FBQyxDQUFDLE9BQU8sQ0FBQyxDQUFDLENBQUMsQ0FBQyxDQUFDO0lBQy9DLENBQUM7Q0FDSjtBQWhFRCxnQ0FnRUMifQ==\",\"assetPath\":\"Assets/Scripts/GroundManager.ts\",\"manifest\":{\"properties\":[{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"materialNone\",\"type\":\"UnityEngine.Material\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"materialRed\",\"type\":\"UnityEngine.Material\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"materialPurple\",\"type\":\"UnityEngine.Material\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"groundListGameObject\",\"type\":\"UnityEngine.GameObject[]\",\"isArray\":true,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"\",\"name\":\"groundList\",\"type\":\"C:/Users/mondu/Projects/Zepeto/TerritorryControlTutorial/Assets/Scripts/Ground.default\",\"isArray\":true,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]}],\"name\":\"GroundManager\",\"description\":\"\"},\"isCompiled\":true}"
-  typescriptHash: cbc9a47432f19781b93424a10c15a926
+    /** \uBCF4\uC720\uD55C \uBAA8\uB4E0 \uADF8\uB77C\uC6B4\uB4DC\uB4E4\uC758 \uBC30\uC5F4
+    */\\r\\n        this.groundList = [];\\r\\n    }\\r\\n    Awake() {\\r\\n       
+    this.InitializeGround();\\r\\n    }\\r\\n    /** GroundManager\uC758 \uD568\uC218\uB098
+    \uBCC0\uC218\uC5D0 \uC811\uADFC\uD560 \uC218 \uC788\uB3C4\uB85D \uC778\uC2A4\uD134\uC2A4\uB97C
+    \uBC18\uD658\uD574\uC904 \uD568\uC218 */\\r\\n    static GetInstance() {\\r\\n       
+    if (!GroundManager.instance) {\\r\\n            const targetObj = UnityEngine_1.GameObject.Find(\\\"Ground
+    Manager\\\");\\r\\n            if (targetObj)\\r\\n                GroundManager.instance
+    = targetObj.GetComponent($typeof(GroundManager));\\r\\n        }\\r\\n       
+    return GroundManager.instance;\\r\\n    }\\r\\n    /** Ground Manager \uC624\uBE0C\uC81D\uD2B8\uC5D0
+    \uC5F0\uACB0\uB418\uC5B4\uC788\uB294 64\uAC1C\uC758 Ground \uC624\uBE0C\uC81D\uD2B8\uB4E4\uC758
+    Ground \uC2A4\uD06C\uB9BD\uD2B8 \uCEF4\uD3EC\uB10C\uD2B8\uB97C \uBCC4\uB3C4\uB85C
+    \uC800\uC7A5(\uCE90\uC2F1)\uD558\uB294 \uD568\uC218 */\\r\\n    InitializeGround()
+    {\\r\\n        this.groundList = [];\\r\\n        // GroundListGameObject \uC5D0\uC11C
+    Ground \uCEF4\uD3EC\uB10C\uD2B8(\uC2A4\uD06C\uB9BD\uD2B8)\uB97C \uCD94\uCD9C\uD558\uC5EC
+    \uC800\uC7A5\uD574\uB460\\r\\n        for (let i = 0; i < this.groundListGameObject.childCount;
+    i++) {\\r\\n            let ground = this.groundListGameObject.GetChild(i).GetComponent($typeof(Ground_1.default));\\r\\n           
+    ground.gameObject.name = `Ground_${i}`;\\r\\n            this.groundList[i] =
+    ground;\\r\\n        }\\r\\n    }\\r\\n    /** \uBAA8\uB4E0 \uADF8\uB77C\uC6B4\uB4DC\uB97C
+    \uCD08\uAE30\uC0C1\uD0DC\uB85C \uB9AC\uC14B\uD569\uB2C8\uB2E4. */\\r\\n    ResetGround()
+    {\\r\\n        this.groundList.forEach(g => g.SetType(0));\\r\\n    }\\r\\n}\\r\\nexports.default
+    = GroundManager;\\r\\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiR3JvdW5kTWFuYWdlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIkdyb3VuZE1hbmFnZXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSw2Q0FBb0U7QUFDcEUsaURBQXFEO0FBQ3JELHFDQUE4QjtBQUk5Qjs7OztHQUlHO0FBQ0gsTUFBcUIsYUFBYyxTQUFRLHFDQUFxQjtJQUFoRTtRQUlJLGlCQUFpQjs7UUEwQ2pCLHVCQUF1QjtRQUNoQixlQUFVLEdBQWEsRUFBRSxDQUFDO0lBa0JyQyxDQUFDO0lBM0RHLEtBQUs7UUFDRCxJQUFJLENBQUMsZ0JBQWdCLEVBQUUsQ0FBQztJQUM1QixDQUFDO0lBU0QscURBQXFEO0lBQ3JELE1BQU0sQ0FBQyxXQUFXO1FBQ2QsSUFBSSxDQUFDLGFBQWEsQ0FBQyxRQUFRLEVBQUU7WUFDekIsTUFBTSxTQUFTLEdBQUcsd0JBQVUsQ0FBQyxJQUFJLENBQUMsZ0JBQWdCLENBQUMsQ0FBQztZQUNwRCxJQUFJLFNBQVM7Z0JBQUUsYUFBYSxDQUFDLFFBQVEsR0FBRyxTQUFTLENBQUMsWUFBWSxTQUFDLGFBQWEsRUFBRyxDQUFDO1NBQ25GO1FBQ0QsT0FBTyxhQUFhLENBQUMsUUFBUSxDQUFDO0lBQ2xDLENBQUM7SUF5QkQsdUZBQXVGO0lBQy9FLGdCQUFnQjtRQUNwQixJQUFJLENBQUMsVUFBVSxHQUFHLEVBQUUsQ0FBQztRQUNyQix1REFBdUQ7UUFFdkQsS0FBSyxJQUFJLENBQUMsR0FBRyxDQUFDLEVBQUUsQ0FBQyxHQUFHLElBQUksQ0FBQyxvQkFBb0IsQ0FBQyxVQUFVLEVBQUUsQ0FBQyxFQUFFLEVBQUU7WUFDM0QsSUFBSSxNQUFNLEdBQVksSUFBSSxDQUFDLG9CQUFvQixDQUFDLFFBQVEsQ0FBQyxDQUFDLENBQUMsQ0FBQyxZQUFZLFNBQUMsZ0JBQU0sRUFBRyxDQUFDO1lBQ25GLE1BQU0sQ0FBQyxVQUFVLENBQUMsSUFBSSxHQUFHLFVBQVUsQ0FBQyxFQUFFLENBQUM7WUFDdkMsSUFBSSxDQUFDLFVBQVUsQ0FBQyxDQUFDLENBQUMsR0FBRyxNQUFNLENBQUM7U0FDL0I7SUFDTCxDQUFDO0lBRUQsNEJBQTRCO0lBQzVCLFdBQVc7UUFDUCxJQUFJLENBQUMsVUFBVSxDQUFDLE9BQU8sQ0FBQyxDQUFDLENBQUMsRUFBRSxDQUFDLENBQUMsQ0FBQyxPQUFPLENBQUMsQ0FBQyxDQUFDLENBQUMsQ0FBQztJQUMvQyxDQUFDO0NBQ0o7QUFqRUQsZ0NBaUVDIn0=\",\"assetPath\":\"Assets/Scripts/GroundManager.ts\",\"manifest\":{\"properties\":[{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"materialNone\",\"type\":\"UnityEngine.Material\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"materialRed\",\"type\":\"UnityEngine.Material\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"materialPurple\",\"type\":\"UnityEngine.Material\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"groundListGameObject\",\"type\":\"UnityEngine.Transform\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"\",\"name\":\"groundList\",\"type\":\"/Users/johnlee/Documents/Zepeto/Projects/TeritoryControl/TerritorryControlTutorial/Assets/Scripts/Ground.default\",\"isArray\":true,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]}],\"name\":\"GroundManager\",\"description\":\"\"},\"isCompiled\":true}"
+  typescriptHash: 15b0bd9e06cbca10846bc262cd3bab09
   onlyWriteTrigger: 0
